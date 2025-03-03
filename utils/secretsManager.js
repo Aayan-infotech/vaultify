@@ -4,7 +4,7 @@ const {
 } = require('@aws-sdk/client-secrets-manager');
 
 const REGION = "us-east-1";
-const SECRET_NAME = "secret-name";
+const SECRET_NAME = "cle-firebase";
 
 const client = new SecretsManagerClient({
     region: REGION,
@@ -27,6 +27,17 @@ async function getSecrets() {
     }
 }
 
+async function getSpecificSecret(key) {
+    try {
+        const secrets = await getSecrets();
+        return secrets[key];
+    } catch (error) {
+        console.error(`Error retrieving secret for key ${key}:`, error);
+        throw error;
+    }
+}
+
 module.exports = {
-    getSecrets
+    getSecrets,
+    getSpecificSecret
 }; 
