@@ -164,10 +164,7 @@ pipeline {
                 script {
                     sh '''
                     echo "Starting new container with latest image..."
-                    docker run -d \
-                        -e AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
-                        -e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} \
-                        -p ${HOST_PORT}:${CONTAINER_PORT} ${IMAGE_NAME}:prodv1
+                    docker run -d -p ${HOST_PORT}:${CONTAINER_PORT} ${IMAGE_NAME}:prodv1
                     '''
                 }
             }
