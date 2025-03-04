@@ -2,7 +2,7 @@ const express = require('express');
 const { getSecrets, getSpecificSecret } = require('./utils/secretsManager');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3033;
 
 app.get('/secrets', async (req, res) => {
     try {
